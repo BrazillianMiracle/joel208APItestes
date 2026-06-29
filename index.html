@@ -1,24 +1,865 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PokéSearch - API Test</title>
-    <link rel="stylesheet" href="src/css/style.css">
-</head>
-<body>
-    <main class="container">
-        <h1>PokéSearch</h1>
-        <div class="search-box">
-            <input type="text" id="pokemonInput" placeholder="Digite o nome do Pokémon...">
-            <button id="searchBtn">Buscar</button>
-        </div>
+    <title>Vida de Gladiador | Combat & High Performance Arena</title>
+    
+    <!-- Tailwind CSS Integrado via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Tipografia de Alta Performance Importada Diretamente -->
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,700;0,800;0,900;1,900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Variáveis de Design de Alta Intensidade */
+        :root {
+            --gladiator-dark: #09090b;
+            --gladiator-card: #141417;
+            --gladiator-crimson: #dc2626;
+            --gladiator-gold: #eab308;
+            --gladiator-silver: #f4f4f5;
+        }
 
-        <section id="pokemonCard" class="card">
-            <p>Busque um Pokémon para ver os dados...</p>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--gladiator-dark);
+            color: var(--gladiator-silver);
+            overflow-x: hidden;
+        }
+
+        .font-condensed {
+            font-family: 'Barlow Condensed', sans-serif;
+        }
+
+        /* Barra de Rolagem Customizada Estilo Arena */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #09090b;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #dc2626;
+            border: 2px solid #09090b;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #b91c1c;
+        }
+
+        /* Vidro Fluido Premium com Gradiente de Borda */
+        .glass-nav {
+            background: rgba(9, 9, 11, 0.95);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+
+        /* Efeitos de Profundidade nos Cards Metódicos */
+        .gladiator-card {
+            background: var(--gladiator-card);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .gladiator-card:hover {
+            transform: translateY(-10px) scale(1.01);
+            border-color: rgba(220, 38, 38, 0.4);
+            box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.8), 0 0 30px 0 rgba(220, 38, 38, 0.1);
+        }
+
+        /* Animação Pulsante Cinemática para o WhatsApp */
+        @keyframes gladiator-pulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); }
+            50% { transform: scale(1.08); box-shadow: 0 0 25px 12px rgba(34, 197, 94, 0); }
+        }
+        .pulse-whatsapp {
+            animation: gladiator-pulse 2.5s infinite ease-in-out;
+        }
+
+        /* Ajustes de Linhas de Gradiente Dinâmicas */
+        .text-gradient-gold {
+            background: linear-gradient(135deg, #ffffff 30%, #eab308 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .text-gradient-crimson {
+            background: linear-gradient(135deg, #ef4444 0%, #991b1b 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-red-600 selection:text-white overflow-x-hidden">
+
+    <!-- BARRA DE NAVEGAÇÃO PREMIUM DE ALTA FIDELIDADE -->
+    <nav class="fixed top-0 left-0 w-full z-50 glass-nav border-b border-white/10 px-4 py-4 md:py-5 transition-all duration-300">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="#" class="font-condensed text-2xl md:text-3xl font-black tracking-tighter text-white italic group">
+                VIDA DE <span class="text-red-600 group-hover:text-yellow-500 transition-colors">GLADIADOR</span>
+            </a>
+            
+            <!-- Links Desktop -->
+            <div class="hidden lg:flex items-center gap-8 text-xs font-bold uppercase tracking-widest text-zinc-400">
+                <a href="#metodologia" class="hover:text-white transition-colors relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-red-600 hover:after:w-full after:transition-all">Metodologia</a>
+                <a href="#horarios" class="hover:text-white transition-colors relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-red-600 hover:after:w-full after:transition-all">Horários</a>
+                <a href="#planos" class="hover:text-white transition-colors relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-red-600 hover:after:w-full after:transition-all">Planos de Batalha</a>
+                <a href="#treinadores" class="hover:text-white transition-colors relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-red-600 hover:after:w-full after:transition-all">Generais</a>
+                <a href="#conquistas" class="hover:text-white transition-colors relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-red-600 hover:after:w-full after:transition-all">Glórias</a>
+                <a href="#faq" class="hover:text-white transition-colors relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-red-600 hover:after:w-full after:transition-all">Suporte</a>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <a href="https://wa.me/5562993901617" class="bg-red-600 hover:bg-red-700 text-white font-condensed text-sm font-bold uppercase tracking-wider px-5 py-2.5 rounded transition-all transform active:scale-95 shadow-lg shadow-red-600/20">
+                    Convite de Elite
+                </a>
+                <!-- Botão Menu Mobile -->
+                <button id="mobile-menu-btn" class="lg:hidden text-white focus:outline-none" aria-label="Abrir Menu">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MENU MOBILE OVERLAY -->
+    <div id="mobile-menu" class="fixed inset-0 z-40 bg-zinc-950/98 backdrop-blur-lg flex flex-col justify-center items-center gap-8 hidden transition-all duration-300">
+        <button id="close-menu-btn" class="absolute top-6 right-6 text-white text-2xl focus:outline-none">&times;</button>
+        <a href="#metodologia" class="font-condensed text-3xl font-bold uppercase tracking-wide text-zinc-300 hover:text-red-500" onclick="toggleMobileMenu()">Metodologia</a>
+        <a href="#horarios" class="font-condensed text-3xl font-bold uppercase tracking-wide text-zinc-300 hover:text-red-500" onclick="toggleMobileMenu()">Horários</a>
+        <a href="#planos" class="font-condensed text-3xl font-bold uppercase tracking-wide text-zinc-300 hover:text-red-500" onclick="toggleMobileMenu()">Planos de Batalha</a>
+        <a href="#treinadores" class="font-condensed text-3xl font-bold uppercase tracking-wide text-zinc-300 hover:text-red-500" onclick="toggleMobileMenu()">Generais</a>
+        <a href="#conquistas" class="font-condensed text-3xl font-bold uppercase tracking-wide text-zinc-300 hover:text-red-500" onclick="toggleMobileMenu()">Glórias</a>
+        <a href="#faq" class="font-condensed text-3xl font-bold uppercase tracking-wide text-zinc-300 hover:text-red-500" onclick="toggleMobileMenu()">Suporte</a>
+    </div>
+
+    <!-- HERO BANNER CINEMATOGRÁFICO -->
+    <section class="relative min-h-screen flex items-center justify-center bg-zinc-950 pt-24 overflow-hidden">
+        <div class="absolute inset-0 z-0 opacity-20 mix-blend-luminosity scale-105 animate-[pulse_8s_infinite]">
+            <img src="https://images.unsplash.com/photo-1517438322307-e67111335449?q=80&w=1920&auto=format&fit=crop" class="w-full h-full object-cover" alt="Gladiator Training Ground">
+        </div>
+        <div class="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/70 to-transparent z-10"></div>
+        <div class="absolute -top-40 -left-40 w-96 h-96 bg-red-600/10 rounded-full blur-[120px] pointer-events-none"></div>
+        <div class="absolute -bottom-40 -right-40 w-96 h-96 bg-yellow-600/10 rounded-full blur-[120px] pointer-events-none"></div>
+        
+        <div class="relative z-20 max-w-6xl mx-auto text-center px-4 md:px-6">
+            <span class="inline-flex items-center gap-2 bg-zinc-900 border border-zinc-800 text-yellow-500 font-bold text-xs uppercase tracking-[0.4em] px-5 py-2 mb-8 rounded-full shadow-inner">
+                <span class="w-2 h-2 rounded-full bg-red-600 animate-ping"></span> MENTE BLINDADA, CORPO INQUEBRÁVEL
+            </span>
+            <h1 class="font-condensed text-5xl sm:text-7xl md:text-9xl font-black uppercase text-white italic leading-[0.85] tracking-tighter">
+                A VIDA DE UM <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-red-500 to-yellow-500">GLADIADOR</span>
+            </h1>
+            <p class="mt-8 text-base sm:text-2xl text-zinc-400 max-w-3xl mx-auto font-normal leading-relaxed">
+                Não somos apenas uma academia. Somos a arena definitiva de transformação biomecânica e psicológica. Treine sob a ciência do combate extremo e conquiste a alta performance.
+            </p>
+            <div class="mt-12 flex flex-col sm:flex-row gap-5 justify-center items-center">
+                <a href="https://wa.me/5562993901617" class="w-full sm:w-auto bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-condensed text-xl font-black uppercase tracking-wider px-12 py-5 rounded shadow-2xl shadow-red-600/30 transition-all transform hover:-translate-y-1">
+                    Reivindicar Minha Vaga
+                </a>
+                <a href="#metodologia" class="w-full sm:w-auto border border-zinc-700 bg-zinc-900/40 hover:bg-zinc-900 hover:border-zinc-500 text-white font-condensed text-xl font-bold uppercase tracking-wider px-12 py-5 rounded transition-all">
+                    Explorar Módulos de Luta
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- PAINEL DE MÉTRICAS REAIS DA ARENA -->
+    <section class="relative z-20 -mt-16 max-w-7xl mx-auto px-4 md:px-6">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 bg-zinc-900/90 border border-white/10 rounded-xl p-6 md:p-8 backdrop-blur-md shadow-2xl">
+            <div class="text-center p-4 border-r border-zinc-800 last:border-0">
+                <p class="font-condensed text-4xl md:text-6xl font-black text-red-600">98%</p>
+                <p class="text-xs md:text-sm text-zinc-400 font-bold uppercase tracking-widest mt-2">Evolução de VO₂ Máx</p>
+            </div>
+            <div class="text-center p-4 md:border-r border-zinc-800 last:border-0">
+                <p class="font-condensed text-4xl md:text-6xl font-black text-yellow-500">+15k</p>
+                <p class="text-xs md:text-sm text-zinc-400 font-bold uppercase tracking-widest mt-2">Rounds de Sparring</p>
+            </div>
+            <div class="text-center p-4 border-r border-zinc-800 last:border-0">
+                <p class="font-condensed text-4xl md:text-6xl font-black text-white">40+</p>
+                <p class="text-xs md:text-sm text-zinc-400 font-bold uppercase tracking-widest mt-2">Programas Exclusivos</p>
+            </div>
+            <div class="text-center p-4 last:border-0">
+                <p class="font-condensed text-4xl md:text-6xl font-black text-red-600">100%</p>
+                <p class="text-xs md:text-sm text-zinc-400 font-bold uppercase tracking-widest mt-2">Foco em Resultados</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTEÚDO ESTRUTURAL PRINCIPAL (SPA) -->
+    <main class="py-16">
+
+        <!-- SEÇÃO 1: METODOLOGIA AVANÇADA (PERSONAL FIGHT) -->
+        <section id="metodologia" class="max-w-7xl mx-auto px-4 md:px-6 py-16 border-b border-zinc-900">
+            <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-16">
+                <div class="max-w-3xl">
+                    <span class="text-red-600 font-bold text-xs uppercase tracking-[0.3em] block mb-3">// MÓDULOS DE PREPARAÇÃO EXTREMA</span>
+                    <h2 class="font-condensed text-4xl md:text-7xl font-black uppercase tracking-tight text-white leading-none">
+                        SISTEMA DE TREINO <br><span class="text-gradient-gold">INDIVIDUALIZADO</span>
+                    </h2>
+                </div>
+                <p class="mt-4 lg:mt-0 text-base md:text-lg text-zinc-400 max-w-md font-light leading-relaxed">
+                    Cada gladiador possui uma biomecânica única. Nossos protocolos individuais moldam sua técnica, força balística e resistência mental sob supervisão científica milimétrica.
+                </p>
+            </div>
+
+            <!-- GRID ROBUSTO DE 10 CARDS DE PREPARAÇÃO BIOMECÂNICA -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+                
+                <!-- Card 1 -->
+                <div class="gladiator-card rounded-lg overflow-hidden cursor-pointer group flex flex-col justify-between" 
+                     onclick="openGladiatorModal('Velocidade Linear e Manopla', 'Treinamento analítico voltado para o desenvolvimento da velocidade de reação neural, precisão de vetores de ataque em ângulos complexos e coordenação intermuscular fina.', 'https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?q=80&w=600&auto=format&fit=crop', 'Alta', 'Agilidade, Coordenação')">
+                    <div class="relative h-56 overflow-hidden bg-zinc-950">
+                        <img src="https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 duration-500 filter brightness-90" alt="Manopla de Velocidade">
+                        <span class="absolute top-3 right-3 bg-red-600/90 text-white text-[10px] font-bold px-2 py-1 rounded tracking-wider uppercase">Nível Elite</span>
+                    </div>
+                    <div class="p-5 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-condensed text-2xl font-black uppercase text-white tracking-wide">Precisão Balística</h3>
+                            <p class="text-xs text-zinc-400 mt-2 line-clamp-2 font-light">Foco total no tempo de reação neural e coordenação sob pressão.</p>
+                        </div>
+                        <div class="mt-4 pt-4 border-t border-zinc-800 flex justify-between items-center">
+                            <span class="text-[10px] font-bold text-yellow-500 uppercase tracking-widest">Ver Dinâmica</span>
+                            <svg class="w-4 h-4 text-zinc-600 group-hover:text-red-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="gladiator-card rounded-lg overflow-hidden cursor-pointer group flex flex-col justify-between" 
+                     onclick="openGladiatorModal('Potência de Core e Quadril', 'Desenvolvimento focado na rotação axial do quadril e fortalecimento cinético do core para transferência máxima de energia do solo até o ponto de impacto.', 'https://images.unsplash.com/photo-1599058917212-d750089bc07e?q=80&w=600&auto=format&fit=crop', 'Extrema', 'Força Explosiva, Core')">
+                    <div class="relative h-56 overflow-hidden bg-zinc-950">
+                        <img src="https://images.unsplash.com/photo-1599058917212-d750089bc07e?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 duration-500 filter brightness-90" alt="Trabalho de Força Saco Pesado">
+                        <span class="absolute top-3 right-3 bg-red-600/90 text-white text-[10px] font-bold px-2 py-1 rounded tracking-wider uppercase">Força Brutal</span>
+                    </div>
+                    <div class="p-5 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-condensed text-2xl font-black uppercase text-white tracking-wide">Cinética de Cintura</h3>
+                            <p class="text-xs text-zinc-400 mt-2 line-clamp-2 font-light">Transferência de força pura gerada a partir dos membros inferiores.</p>
+                        </div>
+                        <div class="mt-4 pt-4 border-t border-zinc-800 flex justify-between items-center">
+                            <span class="text-[10px] font-bold text-yellow-500 uppercase tracking-widest">Ver Dinâmica</span>
+                            <svg class="w-4 h-4 text-zinc-600 group-hover:text-red-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="gladiator-card rounded-lg overflow-hidden cursor-pointer group flex flex-col justify-between" 
+                     onclick="openGladiatorModal('Esquivas Complexas e Pêndulos', 'Estratégias avançadas de mobilidade torácica e cervical para criar linhas de contragolpe eficientes fora do eixo de ataque do oponente.', 'https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=600&auto=format&fit=crop', 'Média-Alta', 'Esquiva, Mobilidade')">
+                    <div class="relative h-56 overflow-hidden bg-zinc-950">
+                        <img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 duration-500 filter brightness-90" alt="Esquiva de Luta">
+                        <span class="absolute top-3 right-3 bg-red-600/90 text-white text-[10px] font-bold px-2 py-1 rounded tracking-wider uppercase">Tático</span>
+                    </div>
+                    <div class="p-5 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-condensed text-2xl font-black uppercase text-white tracking-wide">Fluidez Defensiva</h3>
+                            <p class="text-xs text-zinc-400 mt-2 line-clamp-2 font-light">Domínio completo do espaço tridimensional e tempo de esquiva.</p>
+                        </div>
+                        <div class="mt-4 pt-4 border-t border-zinc-800 flex justify-between items-center">
+                            <span class="text-[10px] font-bold text-yellow-500 uppercase tracking-widest">Ver Dinâmica</span>
+                            <svg class="w-4 h-4 text-zinc-600 group-hover:text-red-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="gladiator-card rounded-lg overflow-hidden cursor-pointer group flex flex-col justify-between" 
+                     onclick="openGladiatorModal('Resistência Cardíaca Intermitente', 'Simulação estrita de rounds profissionais através de protocolos HIIT customizados, elevando o limiar de lactato do atleta.', 'https://images.unsplash.com/photo-1606335543042-57c525922933?q=80&w=600&auto=format&fit=crop', 'Máxima', 'VO2 Máx, Resistência')">
+                    <div class="relative h-56 overflow-hidden bg-zinc-950">
+                        <img src="https://images.unsplash.com/photo-1606335543042-57c525922933?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 duration-500 filter brightness-90" alt="Sparring Cardiorrespiratório">
+                        <span class="absolute top-3 right-3 bg-red-600/90 text-white text-[10px] font-bold px-2 py-1 rounded tracking-wider uppercase">Cardio Absoluto</span>
+                    </div>
+                    <div class="p-5 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-condensed text-2xl font-black uppercase text-white tracking-wide">Pulsão de Combate</h3>
+                            <p class="text-xs text-zinc-400 mt-2 line-clamp-2 font-light">Condicionamento metabólico severo para lutar sem perder a potência.</p>
+                        </div>
+                        <div class="mt-4 pt-4 border-t border-zinc-800 flex justify-between items-center">
+                            <span class="text-[10px] font-bold text-yellow-500 uppercase tracking-widest">Ver Dinâmica</span>
+                            <svg class="w-4 h-4 text-zinc-600 group-hover:text-red-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="gladiator-card rounded-lg overflow-hidden cursor-pointer group flex flex-col justify-between" 
+                     onclick="openGladiatorModal('Estratégia e Ocupação de Ringue', 'Estudo geométrico do ringue. Técnicas avançadas de encurralamento, controle de centro e corte de passos do adversário.', 'https://images.unsplash.com/photo-1595078475328-1ab05d0a6a0e?q=80&w=600&auto=format&fit=crop', 'Média', 'Estratégia, QI de Luta')">
+                    <div class="relative h-56 overflow-hidden bg-zinc-950">
+                        <img src="https://images.unsplash.com/photo-1595078475328-1ab05d0a6a0e?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 duration-500 filter brightness-90" alt="Treino de Domínio Espacial">
+                        <span class="absolute top-3 right-3 bg-red-600/90 text-white text-[10px] font-bold px-2 py-1 rounded tracking-wider uppercase">QI de Arena</span>
+                    </div>
+                    <div class="p-5 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-condensed text-2xl font-black uppercase text-white tracking-wide">Pressão Territorial</h3>
+                            <p class="text-xs text-zinc-400 mt-2 line-clamp-2 font-light">Aprenda a ditar o ritmo do combate dominando a área da lona.</p>
+                        </div>
+                        <div class="mt-4 pt-4 border-t border-zinc-800 flex justify-between items-center">
+                            <span class="text-[10px] font-bold text-yellow-500 uppercase tracking-widest">Ver Dinâmica</span>
+                            <svg class="w-4 h-4 text-zinc-600 group-hover:text-red-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 6 -->
+                <div class="gladiator-card rounded-lg overflow-hidden cursor-pointer group flex flex-col justify-between" 
+                     onclick="openGladiatorModal('Estabilização Proximal de Punho', 'Exercícios específicos Isométricos e excêntricos voltados à integridade articular dos punhos e força empunhadura.', 'https://images.unsplash.com/photo-1508215885820-46801552a984?q=80&w=600&auto=format&fit=crop', 'Baixa-Média', 'Prevenção, Pegada')">
+                    <div class="relative h-56 overflow-hidden bg-zinc-950">
+                        <img src="https://images.unsplash.com/photo-1508215885820-46801552a984?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 duration-500 filter brightness-90" alt="Bandagens de Proteção">
+                        <span class="absolute top-3 right-3 bg-red-600/90 text-white text-[10px] font-bold px-2 py-1 rounded tracking-wider uppercase">Estrutural</span>
+                    </div>
+                    <div class="p-5 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-condensed text-2xl font-black uppercase text-white tracking-wide">Armadura Articular</h3>
+                            <p class="text-xs text-zinc-400 mt-2 line-clamp-2 font-light">Fortalecimento preventivo para suportar impactos de alta tonelagem.</p>
+                        </div>
+                        <div class="mt-4 pt-4 border-t border-zinc-800 flex justify-between items-center">
+                            <span class="text-[10px] font-bold text-yellow-500 uppercase tracking-widest">Ver Dinâmica</span>
+                            <svg class="w-4 h-4 text-zinc-600 group-hover:text-red-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 7 -->
+                <div class="gladiator-card rounded-lg overflow-hidden cursor-pointer group flex flex-col justify-between" 
+                     onclick="openGladiatorModal('Análise Biomecânica da Base', 'Correção postural computadorizada e prática da distribuição vetorial de peso entre os membros inferiores.', 'https://images.unsplash.com/photo-1552674605-db6ffd4facb5?q=80&w=600&auto=format&fit=crop', 'Média', 'Equilíbrio, Postura')">
+                    <div class="relative h-56 overflow-hidden bg-zinc-950">
+                        <img src="https://images.unsplash.com/photo-1552674605-db6ffd4facb5?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 duration-500 filter brightness-90" alt="Análise de Base">
+                        <span class="absolute top-3 right-3 bg-red-600/90 text-white text-[10px] font-bold px-2 py-1 rounded tracking-wider uppercase">Física Pura</span>
+                    </div>
+                    <div class="p-5 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-condensed text-2xl font-black uppercase text-white tracking-wide">Base Inabalável</h3>
+                            <p class="text-xs text-zinc-400 mt-2 line-clamp-2 font-light">Otimização do centro de gravidade para máxima estabilidade em golpes.</p>
+                        </div>
+                        <div class="mt-4 pt-4 border-t border-zinc-800 flex justify-between items-center">
+                            <span class="text-[10px] font-bold text-yellow-500 uppercase tracking-widest">Ver Dinâmica</span>
+                            <svg class="w-4 h-4 text-zinc-600 group-hover:text-red-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 8 -->
+                <div class="gladiator-card rounded-lg overflow-hidden cursor-pointer group flex flex-col justify-between" 
+                     onclick="openGladiatorModal('Combinações de Choque', 'Sincronização estrita do Jab-Direto com passadas rápidas, quebrando bloqueios com velocidade linear extrema.', 'https://images.unsplash.com/photo-1495555961987-6d4c1ecb7be3?q=80&w=600&auto=format&fit=crop', 'Alta', 'Ataque Linear, Tempo')">
+                    <div class="relative h-56 overflow-hidden bg-zinc-950">
+                        <img src="https://images.unsplash.com/photo-1495555961987-6d4c1ecb7be3?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 duration-500 filter brightness-90" alt="Jab Direto Alinhamento">
+                        <span class="absolute top-3 right-3 bg-red-600/90 text-white text-[10px] font-bold px-2 py-1 rounded tracking-wider uppercase">Ofensiva</span>
+                    </div>
+                    <div class="p-5 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-condensed text-2xl font-black uppercase text-white tracking-wide">Vetor de Ataque</h3>
+                            <p class="text-xs text-zinc-400 mt-2 line-clamp-2 font-light">Explosão retilínea insuportável projetada para furar qualquer guarda.</p>
+                        </div>
+                        <div class="mt-4 pt-4 border-t border-zinc-800 flex justify-between items-center">
+                            <span class="text-[10px] font-bold text-yellow-500 uppercase tracking-widest">Ver Dinâmica</span>
+                            <svg class="w-4 h-4 text-zinc-600 group-hover:text-red-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 9 -->
+                <div class="gladiator-card rounded-lg overflow-hidden cursor-pointer group flex flex-col justify-between" 
+                     onclick="openGladiatorModal('Contragolpe Balístico Automatizado', 'Mecanização de respostas reflexas imediatas após absorção ou desvio de golpes na média distância.', 'https://images.unsplash.com/photo-1517438322307-e67111335449?q=80&w=600&auto=format&fit=crop', 'Extrema', 'Reflexo, Resposta')">
+                    <div class="relative h-56 overflow-hidden bg-zinc-950">
+                        <img src="https://images.unsplash.com/photo-1517438322307-e67111335449?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 duration-500 filter brightness-90" alt="Contragolpe de Luta">
+                        <span class="absolute top-3 right-3 bg-red-600/90 text-white text-[10px] font-bold px-2 py-1 rounded tracking-wider uppercase">Fogo Rápido</span>
+                    </div>
+                    <div class="p-5 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-condensed text-2xl font-black uppercase text-white tracking-wide">Ataque Reativo</h3>
+                            <p class="text-xs text-zinc-400 mt-2 line-clamp-2 font-light">Transforme a ação do adversário na ruína dele com respostas instantâneas.</p>
+                        </div>
+                        <div class="mt-4 pt-4 border-t border-zinc-800 flex justify-between items-center">
+                            <span class="text-[10px] font-bold text-yellow-500 uppercase tracking-widest">Ver Dinâmica</span>
+                            <svg class="w-4 h-4 text-zinc-600 group-hover:text-red-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 10 -->
+                <div class="gladiator-card rounded-lg overflow-hidden cursor-pointer group flex flex-col justify-between" 
+                     onclick="openGladiatorModal('Blindagem Psicológica de Combate', 'Protocolos severos de indução de estresse controlado para manutenção da frieza cognitiva em cenários adversos.', 'https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=600&auto=format&fit=crop', 'Mestrado', 'Estoicismo, Foco')">
+                    <div class="relative h-56 overflow-hidden bg-zinc-950">
+                        <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 duration-500 filter brightness-90" alt="Foco Mental Análise">
+                        <span class="absolute top-3 right-3 bg-yellow-500 text-black text-[10px] font-black px-2 py-1 rounded tracking-wider uppercase">Mente de Ferro</span>
+                    </div>
+                    <div class="p-5 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-condensed text-2xl font-black uppercase text-white tracking-wide">Mente Superior</h3>
+                            <p class="text-xs text-zinc-400 mt-2 line-clamp-2 font-light">Neutralização completa do pânico fisiológico através de foco neuro-cognitivo.</p>
+                        </div>
+                        <div class="mt-4 pt-4 border-t border-zinc-800 flex justify-between items-center">
+                            <span class="text-[10px] font-bold text-yellow-500 uppercase tracking-widest">Ver Dinâmica</span>
+                            <svg class="w-4 h-4 text-zinc-600 group-hover:text-red-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </section>
+
+        <!-- SEÇÃO 2: ABAS DE HORÁRIOS INTERATIVAS (UI/UX PREMIUM) -->
+        <section id="horarios" class="max-w-7xl mx-auto px-4 md:px-6 py-16 border-b border-zinc-900">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-yellow-500 font-bold text-xs uppercase tracking-[0.3em] block mb-2">// ORGANIZAÇÃO TÁTICA</span>
+                <h2 class="font-condensed text-4xl md:text-6xl font-black uppercase text-white">CRONOGRAMA DE CONQUISTAS</h2>
+                <p class="mt-3 text-zinc-400 font-light">Selecione seu turno e alinhe sua rotina aos horários oficiais da nossa arena de alta performance.</p>
+            </div>
+
+            <!-- Seletores de Abas -->
+            <div class="flex justify-center gap-4 mb-10">
+                <button onclick="switchScheduleTab('manha')" id="tab-manha" class="schedule-tab-btn px-6 py-3 rounded font-condensed font-bold uppercase tracking-wider text-sm transition-all bg-red-600 text-white shadow-lg shadow-red-600/20">
+                    Turno Manhã
+                </button>
+                <button onclick="switchScheduleTab('tarde')" id="tab-tarde" class="schedule-tab-btn px-6 py-3 rounded font-condensed font-bold uppercase tracking-wider text-sm transition-all bg-zinc-900 text-zinc-400 hover:bg-zinc-800">
+                    Turno Tarde
+                </button>
+                <button onclick="switchScheduleTab('noite')" id="tab-noite" class="schedule-tab-btn px-6 py-3 rounded font-condensed font-bold uppercase tracking-wider text-sm transition-all bg-zinc-900 text-zinc-400 hover:bg-zinc-800">
+                    Turno Noite
+                </button>
+            </div>
+
+            <!-- Conteúdos das Abas -->
+            <div id="content-manha" class="schedule-content-block grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-zinc-900 p-6 rounded-lg border border-white/5 flex justify-between items-center">
+                    <div>
+                        <p class="font-condensed text-xl font-bold text-white">06:00 - 07:30</p>
+                        <p class="text-sm text-zinc-400 mt-1">Gladiadores da Madrugada (Boxe)</p>
+                    </div>
+                    <span class="bg-red-600/10 text-red-500 text-xs font-bold px-3 py-1 rounded border border-red-500/20">Alta Intensidade</span>
+                </div>
+                <div class="bg-zinc-900 p-6 rounded-lg border border-white/5 flex justify-between items-center">
+                    <div>
+                        <p class="font-condensed text-xl font-bold text-white">08:00 - 09:30</p>
+                        <p class="text-sm text-zinc-400 mt-1">Preparação Física Balística</p>
+                    </div>
+                    <span class="bg-yellow-500/10 text-yellow-500 text-xs font-bold px-3 py-1 rounded border border-yellow-500/20">Força / Cardio</span>
+                </div>
+                <div class="bg-zinc-900 p-6 rounded-lg border border-white/5 flex justify-between items-center">
+                    <div>
+                        <p class="font-condensed text-xl font-bold text-white">10:00 - 11:30</p>
+                        <p class="text-sm text-zinc-400 mt-1">Módulo Individual Técnico</p>
+                    </div>
+                    <span class="bg-zinc-800 text-zinc-400 text-xs font-bold px-3 py-1 rounded">Foco Biomecânico</span>
+                </div>
+            </div>
+
+            <div id="content-tarde" class="schedule-content-block grid grid-cols-1 md:grid-cols-3 gap-6 hidden">
+                <div class="bg-zinc-900 p-6 rounded-lg border border-white/5 flex justify-between items-center">
+                    <div>
+                        <p class="font-condensed text-xl font-bold text-white">12:15 - 13:45</p>
+                        <p class="text-sm text-zinc-400 mt-1">Sparring Executivo Almoço</p>
+                    </div>
+                    <span class="bg-red-600/10 text-red-500 text-xs font-bold px-3 py-1 rounded border border-red-500/20">Alta Intensidade</span>
+                </div>
+                <div class="bg-zinc-900 p-6 rounded-lg border border-white/5 flex justify-between items-center">
+                    <div>
+                        <p class="font-condensed text-xl font-bold text-white">15:00 - 16:30</p>
+                        <p class="text-sm text-zinc-400 mt-1">Táticas de Ringue Avançadas</p>
+                    </div>
+                    <span class="bg-zinc-800 text-zinc-400 text-xs font-bold px-3 py-1 rounded">Estratégia Pura</span>
+                </div>
+                <div class="bg-zinc-900 p-6 rounded-lg border border-white/5 flex justify-between items-center">
+                    <div>
+                        <p class="font-condensed text-xl font-bold text-white">17:00 - 18:00</p>
+                        <p class="text-sm text-zinc-400 mt-1">Aprimoramento de Contragolpe</p>
+                    </div>
+                    <span class="bg-yellow-500/10 text-yellow-500 text-xs font-bold px-3 py-1 rounded border border-yellow-500/20">Velocidade</span>
+                </div>
+            </div>
+
+            <div id="content-noite" class="schedule-content-block grid grid-cols-1 md:grid-cols-3 gap-6 hidden">
+                <div class="bg-zinc-900 p-6 rounded-lg border border-white/5 flex justify-between items-center">
+                    <div>
+                        <p class="font-condensed text-xl font-bold text-white">19:00 - 20:30</p>
+                        <p class="text-sm text-zinc-400 mt-1">Esquadrão Muay Thai Core</p>
+                    </div>
+                    <span class="bg-red-600/10 text-red-500 text-xs font-bold px-3 py-1 rounded border border-red-500/20">Extrema</span>
+                </div>
+                <div class="bg-zinc-900 p-6 rounded-lg border border-white/5 flex justify-between items-center">
+                    <div>
+                        <p class="font-condensed text-xl font-bold text-white">20:30 - 22:00</p>
+                        <p class="text-sm text-zinc-400 mt-1">Forja da Noite (Boxe Elite)</p>
+                    </div>
+                    <span class="bg-red-600/10 text-red-500 text-xs font-bold px-3 py-1 rounded border border-red-500/20">Extrema</span>
+                </div>
+                <div class="bg-zinc-900 p-6 rounded-lg border border-white/5 flex justify-between items-center">
+                    <div>
+                        <p class="font-condensed text-xl font-bold text-white">22:00 - 23:00</p>
+                        <p class="text-sm text-zinc-400 mt-1">Sparring Livre Controlado</p>
+                    </div>
+                    <span class="bg-yellow-500/10 text-yellow-500 text-xs font-bold px-3 py-1 rounded border border-yellow-500/20">Combate Real</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 3: PLANOS DE BATALHA (MATRÍCULAS DE ALTA CONVERSÃO) -->
+        <section id="planos" class="max-w-7xl mx-auto px-4 md:px-6 py-16 border-b border-zinc-900">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-red-600 font-bold text-xs uppercase tracking-[0.3em] block mb-2">// INVESTIMENTO EM SI MESMO</span>
+                <h2 class="font-condensed text-4xl md:text-6xl font-black uppercase text-white">SELEÇÃO DE CONTRATO</h2>
+                <p class="mt-3 text-zinc-400 font-light">Escolha seu nível de comprometimento com a evolução física estruturada.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- Plano Recruta -->
+                <div class="bg-zinc-900 rounded-xl border border-zinc-800 p-8 flex flex-col justify-between transition-transform hover:scale-[1.02]">
+                    <div>
+                        <span class="text-xs font-bold text-zinc-400 uppercase tracking-widest bg-zinc-800 px-3 py-1 rounded">Mensal Estrito</span>
+                        <h3 class="font-condensed text-3xl font-black uppercase text-white mt-4">PLANO RECRUTA</h3>
+                        <p class="text-zinc-500 text-xs mt-1">Acesso flexível para iniciantes na jornada.</p>
+                        <div class="mt-6 border-b border-zinc-800 pb-6">
+                            <span class="text-sm text-zinc-400 font-medium">R$</span>
+                            <span class="font-condensed text-5xl font-black text-white">220</span>
+                            <span class="text-zinc-500 text-xs">/mês</span>
+                        </div>
+                        <ul class="mt-6 space-y-4 text-sm text-zinc-300">
+                            <li class="flex items-center gap-3"><svg class="w-4 h-4 text-red-500 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>Acesso a 3 turmas semanais</li>
+                            <li class="flex items-center gap-3"><svg class="w-4 h-4 text-red-500 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>Uso do Ringue Oficial Orientado</li>
+                            <li class="flex items-center gap-3 text-zinc-500 line-through"><svg class="w-4 h-4 text-zinc-600 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12"/></svg>Avaliação de Core Individualizada</li>
+                        </ul>
+                    </div>
+                    <a href="https://wa.me/5562993901617?text=Quero%20o%20Plano%20Recruta" class="mt-8 block text-center bg-zinc-800 hover:bg-zinc-700 text-white font-condensed font-bold uppercase tracking-wider py-3 rounded transition-colors">Iniciar Batalha</a>
+                </div>
+
+                <!-- Plano Gladiador (Destaque) -->
+                <div class="bg-zinc-900 rounded-xl border-2 border-red-600 p-8 flex flex-col justify-between transition-transform hover:scale-[1.02] relative shadow-xl shadow-red-600/5">
+                    <div class="absolute top-0 right-12 transform -translate-y-1/2 bg-red-600 text-white font-condensed text-xs font-black uppercase tracking-widest px-4 py-1.5 rounded-full shadow-lg">RECOMENDADO</div>
+                    <div>
+                        <span class="text-xs font-bold text-yellow-500 uppercase tracking-widest bg-yellow-500/10 border border-yellow-500/20 px-3 py-1 rounded">Semestral Premium</span>
+                        <h3 class="font-condensed text-3xl font-black uppercase text-white mt-4">PLANO GLADIADOR</h3>
+                        <p class="text-zinc-400 text-xs mt-1">Acesso completo para quem busca transformação extrema.</p>
+                        <div class="mt-6 border-b border-zinc-800 pb-6">
+                            <span class="text-sm text-zinc-400 font-medium">R$</span>
+                            <span class="font-condensed text-5xl font-black text-yellow-500">180</span>
+                            <span class="text-zinc-500 text-xs">/mês recorrente</span>
+                        </div>
+                        <ul class="mt-6 space-y-4 text-sm text-zinc-300">
+                            <li class="flex items-center gap-3"><svg class="w-4 h-4 text-red-500 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>Acesso Livre de Segunda a Sábado</li>
+                            <li class="flex items-center gap-3"><svg class="w-4 h-4 text-red-500 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>2 Sessões de Personal Fight por mês</li>
+                            <li class="flex items-center gap-3"><svg class="w-4 h-4 text-red-500 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>Análise de Postura e Movimento Anual</li>
+                        </ul>
+                    </div>
+                    <a href="https://wa.me/5562993901617?text=Quero%20o%20Plano%20Gladiador" class="mt-8 block text-center bg-red-600 hover:bg-red-700 text-white font-condensed text-lg font-black uppercase tracking-wider py-4 rounded transition-all shadow-lg shadow-red-600/20">Tornar-se Gladiador</a>
+                </div>
+
+                <!-- Plano Espartano -->
+                <div class="bg-zinc-900 rounded-xl border border-zinc-800 p-8 flex flex-col justify-between transition-transform hover:scale-[1.02]">
+                    <div>
+                        <span class="text-xs font-bold text-zinc-400 uppercase tracking-widest bg-zinc-800 px-3 py-1 rounded">Anual Elite</span>
+                        <h3 class="font-condensed text-3xl font-black uppercase text-white mt-4">PLANO ESPARTANO</h3>
+                        <p class="text-zinc-500 text-xs mt-1">Estilo de vida definitivo e blindagem total.</p>
+                        <div class="mt-6 border-b border-zinc-800 pb-6">
+                            <span class="text-sm text-zinc-400 font-medium">R$</span>
+                            <span class="font-condensed text-5xl font-black text-white">150</span>
+                            <span class="text-zinc-500 text-xs">/mês integral</span>
+                        </div>
+                        <ul class="mt-6 space-y-4 text-sm text-zinc-300">
+                            <li class="flex items-center gap-3"><svg class="w-4 h-4 text-red-500 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>Acesso Livre Total + Aulas Especiais</li>
+                            <li class="flex items-center gap-3"><svg class="w-4 h-4 text-red-500 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>4 Sessões de Personal Fight por mês</li>
+                            <li class="flex items-center gap-3"><svg class="w-4 h-4 text-red-500 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>Suporte Nutricional Clínico Integrado</li>
+                        </ul>
+                    </div>
+                    <a href="https://wa.me/5562993901617?text=Quero%20o%20Plano%20Espartano" class="mt-8 block text-center bg-zinc-800 hover:bg-zinc-700 text-white font-condensed font-bold uppercase tracking-wider py-3 rounded transition-colors">Dominar o Legado</a>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SEÇÃO 4: OS GENERAIS DA ARENA (TREINADORES ELITE) -->
+        <section id="treinadores" class="max-w-7xl mx-auto px-4 md:px-6 py-16 border-b border-zinc-900">
+            <div class="max-w-3xl mb-12">
+                <span class="text-yellow-500 font-bold text-xs uppercase tracking-[0.3em] block mb-2">// LIDERANÇA TÉCNICA SEVERA</span>
+                <h2 class="font-condensed text-4xl md:text-6xl font-black uppercase text-white">NOSSOS GENERAIS</h2>
+                <p class="mt-4 text-zinc-400 font-light">Você não será treinado por amadores. Nossa comissão técnica é composta por ex-atletas profissionais certificados internacionalmente.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- Treinador 1 -->
+                <div class="bg-zinc-900 rounded-xl overflow-hidden border border-zinc-800 group">
+                    <div class="h-80 overflow-hidden relative bg-zinc-950">
+                        <img src="https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover grayscale group-hover:grayscale-0 duration-500 transform group-hover:scale-105" alt="Head Coach Boxe">
+                        <div class="absolute inset-0 bg-gradient-to-t from-zinc-900 via-transparent to-transparent"></div>
+                    </div>
+                    <div class="p-6 border-t-2 border-red-600">
+                        <h3 class="font-condensed text-2xl font-black uppercase text-white tracking-wide">Marcus "Gladiador" Silva</h3>
+                        <p class="text-xs text-yellow-500 font-bold uppercase tracking-widest mt-1">Head Coach Boxe Elite</p>
+                        <p class="text-xs text-zinc-400 mt-3 font-light leading-relaxed">22 anos de ringue, faixa preta e especialista em biomecânica de golpes lineares de alta potência.</p>
+                    </div>
+                </div>
+
+                <!-- Treinador 2 -->
+                <div class="bg-zinc-900 rounded-xl overflow-hidden border border-zinc-800 group">
+                    <div class="h-80 overflow-hidden relative bg-zinc-950">
+                        <img src="https://images.unsplash.com/photo-1595078475328-1ab05d0a6a0e?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover grayscale group-hover:grayscale-0 duration-500 transform group-hover:scale-105" alt="Coach Muay Thai">
+                        <div class="absolute inset-0 bg-gradient-to-t from-zinc-900 via-transparent to-transparent"></div>
+                    </div>
+                    <div class="p-6 border-t-2 border-yellow-500">
+                        <h3 class="font-condensed text-2xl font-black uppercase text-white tracking-wide">Alexandre "Kru" Costa</h3>
+                        <p class="text-xs text-yellow-500 font-bold uppercase tracking-widest mt-1">Especialista Muay Thai & Clinche</p>
+                        <p class="text-xs text-zinc-400 mt-3 font-light leading-relaxed">Certificado na Tailândia (Bangcoc), mestre absoluto em esgrima de pescoço e alinhamento de joelho.</p>
+                    </div>
+                </div>
+
+                <!-- Treinador 3 -->
+                <div class="bg-zinc-900 rounded-xl overflow-hidden border border-zinc-800 group">
+                    <div class="h-80 overflow-hidden relative bg-zinc-950">
+                        <img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover grayscale group-hover:grayscale-0 duration-500 transform group-hover:scale-105" alt="Fisiologista Arena">
+                        <div class="absolute inset-0 bg-gradient-to-t from-zinc-900 via-transparent to-transparent"></div>
+                    </div>
+                    <div class="p-6 border-t-2 border-white">
+                        <h3 class="font-condensed text-2xl font-black uppercase text-white tracking-wide">Dra. Juliana Mendes</h3>
+                        <p class="text-xs text-yellow-500 font-bold uppercase tracking-widest mt-1">Fisiologista e Preparadora Física</p>
+                        <p class="text-xs text-zinc-400 mt-3 font-light leading-relaxed">Mestre em Ciências do Esporte, responsável pelo monitoramento de limiar anaeróbico e lactato.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SEÇÃO 5: HISTÓRICO DE TÍTULOS E CONQUISTAS DA ARENA -->
+        <section id="conquistas" class="max-w-7xl mx-auto px-4 md:px-6 py-16 border-b border-zinc-900">
+            <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-16">
+                <div class="max-w-3xl">
+                    <span class="text-red-600 font-bold text-xs uppercase tracking-[0.3em] block mb-3">// NOSSO SANGUE REGISTRADO NA HISTÓRIA</span>
+                    <h2 class="font-condensed text-4xl md:text-7xl font-black uppercase text-white leading-none">
+                        MUSEU DE <br><span class="text-gradient-crimson">CAMPEÕES</span>
+                    </h2>
+                </div>
+            </div>
+
+            <!-- Grid de Cards de Glória Ampliados -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                
+                <div class="gladiator-card rounded-lg overflow-hidden p-6 border-l-4 border-l-yellow-500">
+                    <p class="font-condensed text-xs font-bold text-yellow-500 uppercase tracking-widest">Temporada 2024</p>
+                    <h3 class="font-condensed text-2xl font-black text-white mt-2 uppercase">Cinturão dos Meio-Médios</h3>
+                    <p class="text-xs text-zinc-400 mt-2 font-light leading-relaxed">Vitória por nocaute técnico com direto de direita avassalador no segundo assalto do campeonato brasileiro.</p>
+                </div>
+
+                <div class="gladiator-card rounded-lg overflow-hidden p-6 border-l-4 border-l-red-600">
+                    <p class="font-condensed text-xs font-bold text-red-600 uppercase tracking-widest">Temporada 2024</p>
+                    <h3 class="font-condensed text-2xl font-black text-white mt-2 uppercase">Melhor Estrutura Regional</h3>
+                    <p class="text-xs text-zinc-400 mt-2 font-light leading-relaxed">Reconhecimento oficial pela Federação Desportiva devido à engenharia de treino e menor índice de lesões.</p>
+                </div>
+
+                <div class="gladiator-card rounded-lg overflow-hidden p-6 border-l-4 border-l-white">
+                    <p class="font-condensed text-xs font-bold text-zinc-400 uppercase tracking-widest">Temporada 2025</p>
+                    <h3 class="font-condensed text-2xl font-black text-white mt-2 uppercase">15 Combates Invicto</h3>
+                    <p class="text-xs text-zinc-400 mt-2 font-light leading-relaxed">Série de vitórias consecutivas da nossa delegação de atletas amadores, dominando o pódio de forma unânime.</p>
+                </div>
+
+                <div class="gladiator-card rounded-lg overflow-hidden p-6 border-l-4 border-l-yellow-500">
+                    <p class="font-condensed text-xs font-bold text-yellow-500 uppercase tracking-widest">Temporada 2026</p>
+                    <h3 class="font-condensed text-2xl font-black text-white mt-2 uppercase">Troféu Disciplina de Ferro</h3>
+                    <p class="text-xs text-zinc-400 mt-2 font-light leading-relaxed">Honraria máxima concedida à nossa delegação pela conduta ética e técnica impecável dentro e fora das arenas.</p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SEÇÃO 6: PERGUNTAS FREQUENTES (SISTEMA ACCORDION PREMIUM EM JS) -->
+        <section id="faq" class="max-w-4xl mx-auto px-4 md:px-6 py-16">
+            <div class="text-center mb-12">
+                <span class="text-red-600 font-bold text-xs uppercase tracking-[0.3em] block mb-2">// ESCLARECIMENTOS CRUENCIAIS</span>
+                <h2 class="font-condensed text-4xl md:text-6xl font-black uppercase text-white">PERGUNTAS FREQUENTES</h2>
+                <p class="mt-3 text-zinc-400 font-light">Tire suas dúvidas estruturais sobre nossa metodologia antes de pisar na arena.</p>
+            </div>
+
+            <div class="space-y-4">
+                
+                <!-- Item FAQ 1 -->
+                <div class="bg-zinc-900 border border-zinc-800 rounded-lg overflow-hidden">
+                    <button onclick="toggleFaqAccordion(1)" class="w-full flex justify-between items-center p-6 text-left text-white focus:outline-none font-semibold text-lg hover:bg-zinc-800/50 transition-colors">
+                        <span>Preciso ter experiência prévia em artes marciais para treinar?</span>
+                        <svg id="faq-icon-1" class="w-5 h-5 text-zinc-400 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                    <div id="faq-content-1" class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out bg-zinc-950">
+                        <p class="p-6 text-sm text-zinc-400 leading-relaxed font-light">
+                            Absolutamente não. Nosso método "Vida de Gladiador" foi estruturado para receber indivíduos de qualquer nível de condicionamento. Adaptamos a carga mecânica e técnica de forma progressiva para garantir evolução segura desde o primeiro dia.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Item FAQ 2 -->
+                <div class="bg-zinc-900 border border-zinc-800 rounded-lg overflow-hidden">
+                    <button onclick="toggleFaqAccordion(2)" class="w-full flex justify-between items-center p-6 text-left text-white focus:outline-none font-semibold text-lg hover:bg-zinc-800/50 transition-colors">
+                        <span>Como funcionam as sessões de Personal Fight do plano?</span>
+                        <svg id="faq-icon-2" class="w-5 h-5 text-zinc-400 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                    <div id="faq-content-2" class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out bg-zinc-950">
+                        <p class="p-6 text-sm text-zinc-400 leading-relaxed font-light">
+                            As sessões individuais são agendadas diretamente na recepção ou via app exclusivo de membros. Nelas, um treinador foca 100% do tempo em suas correções biomecânicas, velocidade e estratégias específicas, acelerando seus resultados em até 3x comparado ao treino comum.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Item FAQ 3 -->
+                <div class="bg-zinc-900 border border-zinc-800 rounded-lg overflow-hidden">
+                    <button onclick="toggleFaqAccordion(3)" class="w-full flex justify-between items-center p-6 text-left text-white focus:outline-none font-semibold text-lg hover:bg-zinc-800/50 transition-colors">
+                        <span>O Sparring é obrigatório em todas as turmas?</span>
+                        <svg id="faq-icon-3" class="w-5 h-5 text-zinc-400 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                    <div id="faq-content-3" class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out bg-zinc-950">
+                        <p class="p-6 text-sm text-zinc-400 leading-relaxed font-light">
+                            Não. O Sparring (combate simulado) é uma atividade estritamente opcional, altamente controlada e direcionada apenas a alunos com graduação adequada e liberação técnica dos nossos generais. Para quem busca apenas condicionamento e técnica, existem módulos focados sem contato pleno.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
     </main>
 
-    <script src="src/js/script.js"></script>
-</body>
-</html>
+    <!-- RODAPÉ INSTITUCIONAL IMPERIAL -->
+    <footer class="bg-zinc-950 text-white py-16 border-t border-white/10 relative overflow-hidden">
+        <div class="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-red-600 via-yellow-500 to-red-600"></div>
+        <div class="max-w-7xl mx-auto px-4 md:px-6 text-center">
+            <h2 class="font-condensed text-4xl font-black italic tracking-tighter mb-2 text-white">VIDA DE <span class="text-red-600">GLADIADOR</span></h2>
+            <p class="text-sm text-zinc-500 max-w-md mx-auto mb-10 font-light">A engenharia científica aplicada ao combate extremo de alta performance. Goiânia - GO.</p>
+            <div class="flex flex-wrap justify-center gap-8 text-xs uppercase font-bold tracking-widest text-zinc-400 mb-10">
+                <a href="#metodologia" class="hover:text-white transition-colors">Metodologia</a>
+                <a href="#horarios" class="hover:text-white transition-colors">Horários</a>
+                <a href="#planos" class="hover:text-white transition-colors">Contratos</a>
+                <a href="#treinadores" class="hover:text-white transition-colors">Generais</a>
+                <a href="#conquistas" class="hover:text-white transition-colors">Glórias</a>
+            </div>
+            <p class="text-xs text-zinc-600 tracking-wider">&copy; 2026 Vida de Gladiador. Todos os direitos de design e performance reservados.</p>
+        </div>
+    </footer>
+
+    <!-- BOTÃO FLUTUANTE DE CONVERSÃO EXTREMA (WHATSAPP) -->
+    <a href="https://wa.me/5562993901617" target="_blank" rel="noopener noreferrer" class="pulse-whatsapp fixed bottom-6 right-6 z-[99] bg-green-500 hover:bg-green-600 text-white w-16 h-16 rounded-full flex items-center justify-center shadow-2xl transition-all active:scale-95" aria-label="Marcar Aula Experimental no WhatsApp">
+        <svg class="w-8 h-8 fill-current" viewBox="0 0 24 24">
+            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397 0 11.93 0c3.165.001 6.14 1.233 8.377 3.469 2.237 2.236 3.467 5.21 3.466 8.378-.004 6.582-5.341 11.93-11.874 11.93a11.85 11.85 0 0 1-5.694-1.464L0 24zm6.59-4.846c1.6.95 3.198 1.451 4.743 1.452 5.341 0 9.688-4.347 9.691-9.69.002-2.589-1.006-5.023-2.841-6.859C16.347 2.22 13.91 1.21 11.317 1.21c-5.345 0-9.69 4.346-9.693 9.69-.001 1.637.478 3.237 1.385 4.631l-.993 3.626 3.71-.973zM17.18 14.77c-.312-.156-1.848-.912-2.135-1.017-.286-.105-.495-.156-.704.156-.21.312-.813 1.017-.996 1.224-.183.208-.365.234-.677.078-1.32-.662-2.316-1.154-3.233-2.73-.243-.417.243-.387.696-1.288.078-.156.039-.292-.02-.397-.058-.105-.494-1.193-.677-1.637-.178-.428-.357-.369-.494-.369h-.421c-.156 0-.41.058-.624.292-.214.234-.814.795-.814 1.94 0 1.144.833 2.25 1.0 2.406.166.156 1.639 2.502 3.972 3.511 2.332 1.008 2.332.672 2.748.633.416-.039 1.343-.548 1.533-1.077.19-.53.19-.987.133-1.077-.058-.09-.214-.143-.526-.299z"/>
+        </svg>
+    </a>
+
+    <!-- MODAL SPA AVANÇADO (INJEÇÃO DE DADOS BIOMECÂNICOS VIA JS) -->
+    <div id="gladiator-modal" class="fixed inset-0 z-[100] hidden bg-zinc-950/95 backdrop-blur-md flex items-center justify-center p-4 transition-all duration-300">
+        <div class="bg-zinc-900 w-full max-w-2xl rounded-xl overflow-hidden shadow-2xl border border-red-600 transform transition-all max-h-[90vh] overflow-y-auto">
+            
+            <div class="relative h-64 sm:h-80 bg-zinc-950">
+                <img id="modal-image" src="" class="w-full h-full object-cover" alt="Gladiator Detailed System">
+                <button onclick="closeGladiatorModal()" class="absolute top-4 right-4 bg-red-600 hover:bg-red-700 text-white font-bold w-10 h-10 rounded-full flex items-center justify-center shadow-lg transition-transform active:scale-90 focus:outline-none" title="Fechar Arena">
+                    ✕
+                </button>
+            </div>
+            
+            <div class="p-6 md:p-8">
+                <div class="flex flex-wrap gap-2 mb-3">
+                    <span id="modal-badge-intensity" class="bg-red-600 text-white text-[10px] font-black uppercase tracking-widest px-2 py-1 rounded">Intensidade</span>
+                    <span id="modal-badge-focus" class="bg-zinc-800 text-yellow-500 text-[10px] font-black uppercase tracking-widest px-2 py-1 rounded border border-zinc-700">Foco</span>
+                </div>
+                <h3 id="modal-title" class="font-condensed text-3xl md:text-5xl font-black uppercase text-white tracking-tight">
+                    NOME DO MÓDULO
+                </h3>
+                
+                <div class="mt-4 p-4 bg-zinc-950 rounded border border-zinc-800">
+                    <p class="text-xs font-bold text-zinc-500 uppercase tracking-widest">Protocolo de Engenharia Humana</p>
+                    <p id="modal-description" class="mt-2 text-zinc-300 text-sm md:text-base leading-relaxed font-light">
+                        Descrição metodológica detalhada.
+                    </p>
+                </div>
+                
+                <div class="mt-6 pt-6 border-t border-zinc-800 flex flex-col sm:flex-row gap-4 items-center justify-between">
+                    <div class="text-left w-full sm:w-auto">
+                        <p class="text-[10px] text-zinc-500 uppercase font-bold tracking-widest">Disponibilidade de Vagas</p>
+                        <p class="text-sm font-extrabold text-white">Unidade Central Premium (Goiânia)</p>
+                    </div>
+                    <a id="modal-whatsapp-link" href="#" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto text-center bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-condensed text-lg font-black uppercase tracking-wider px-8 py-3.5 rounded transition-all block shadow-lg shadow-green-500/10">
+                        Agendar Chamado de Luta
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- SCRIPTS DE GERENCIAMENTO DE ESTADO SPA E MICRO-INTERAÇÕES -->
+    <script>
+        /**
+         * Gerenciador de Menu Responsivo
+         */
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const closeMenuBtn = document.getElementById('close-menu-btn');
+
+        menuBtn.addEventListener('click', () => mobileMenu.classList.remove('hidden'));
+        closeMenuBtn.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+
+        function toggleMobileMenu() {
+            mobileMenu.classList.add('hidden');
+        }
+
+        /**
+         * Gerenciador Avançado de Janelas Modais SPA
+         */
+        function openGladiatorModal(title, description, imageUrl, intensity, focus) {
+            const modal = document.getElementById('gladiator-modal');
+            const mTitle = document.getElementById('modal-title');
+            const mDesc = document.getElementById('modal-description');
+            const mImg = document.getElementById('modal-image');
+            const mLink = document.getElementById('modal-whatsapp-link');
+            const mIntensity = document.getElementById('modal-badge-intensity');
+            const mFocus = document.getElementById('modal-badge-focus');
+
+            if (modal && mTitle && mDesc && mImg && mLink) {
+                mTitle.innerText = title;
+                mDesc.innerText = description;
+                mImg.src = imageUrl;
+                mImg.alt = title;
+                mIntensity.innerText = `Carga: ${intensity}`;
+                mFocus.innerText = `Atributos: ${focus}`;
+                
+                const textoTratado = encodeURIComponent(`Saudações Arena! Quero agendar meu treino experimental focado no Protocolo: ${title}`);
+                mLink.href = `https://wa.me/5562993901617?text=${textoTratado}`;
+                
+                document.body.style.overflow = 'hidden';
+                modal.classList.remove('hidden');
+            }
+        }
+
+        function closeGladiatorModal() {
+            const modal = document.getElementById('gladiator-modal');
+            if (modal) {
+                modal.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeGladiatorModal();
+        });
+
+        /**
+         * Gerenciador Dinâmico de Abas de Horários
+         */
+        function switchScheduleTab(shift) {
+            // Esconde todos os blocos de conteúdo
+            document.querySelectorAll('.schedule-content-block').forEach(block => block.classList.add('hidden'));
+            // Remove classes ativas de todos os botões
+            document.querySelectorAll('.schedule-tab-btn').forEach(btn => {
+                btn.classList.remove('bg-red-600', 'text-white', 'shadow-lg', 'shadow-red-600/20');
+                btn.classList.add('bg-zinc-900', 'text-zinc-400');
+            });
+
+            // Ativa o bloco selecionado
+            document.getElementById(`content-${shift}`).classList.remove('hidden');
+            // Ativa o botão selecionado
+            const activeBtn = document.getElementById(`tab-${shift}`);
+            activeBtn.classList.remove('bg-zinc-900', 'text-zinc-400');
+            activeBtn.classList.add('bg-red-600', 'text-white', 'shadow-lg', 'shadow-red-600/20');
+        }
+
+        /**
+         * Sistema de Accordion do FAQ Avançado
+         */
+        function toggleFaqAccordion(index) {
+            const content = document.getElementById(`faq-content-${index}`);
+            const icon = document.getElementById(`faq-icon-${index}`);
+            
+            if (content.style.maxHeight && content.style.maxHeightNormally I can help with things like this, but I don't seem to have access to that content. You can try again or ask me for something else.
